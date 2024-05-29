@@ -1,0 +1,60 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="static/asset/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/asset/css/style.css" />
+</head>
+<body style="background-color:#e3f2b1">
+    <div class="container" style="margin: auto;">
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <a href="/" class="anchor Home shadow"><strong>Go back to Home page</strong></a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-5 text-center">
+                <p class="title"><strong>Organic </strong><img class="navbar-brand" src="{% static 'asset/images/Leafyy.png' %}" style="width: 70px; height: 70px;" /><strong> Estore</strong></p><b style="font-size:16px;">Welcome to Organic Grocery Estore - Your Online Grocery Destination!</b>
+            </div>
+            <div class="col-md-6 shadow rounded-3 mt-4" style="background-color: white; width: 450px; height: 550px;">
+                <h2 style="text-align:center;">Registeration</h2><hr>
+                {% if errmsg %}
+                <div class="alert alert-danger">
+                    {{errmsg}}
+                </div>
+                {% endif %}
+                <form method="POST" action="/register">
+                    {% csrf_token %}
+                    <div class="mb-3 mt-4">
+                        <label for="input1" class="form-label"></label>
+                        <input style="height: 60px;" type="email number" name="uname" class="form-control" id="input1" placeholder="Email address or phone number">
+                    </div><!-- username-->
+                    <div class="mb-3">
+                        <label for="input2" class="form-label"></label>
+                        <input style="height: 60px;" type="password" name="upass" class="form-control" id="input2" placeholder="Password">
+                    </div><!-- password-->
+                    <div class="mb-3">
+                        <label for="input3" class="form-label"></label>
+                        <input style="height: 60px;" type="password" name="ucpass" class="form-control" id="input3" placeholder="Confirm Password">
+                    </div><!-- password again-->
+                    <div class="mb-3" style="text-align: center;">
+                        <input type="submit" class="btn btn-primary custom-btn-lg" value="Register" style="margin-top: 2px; width: 400px; padding: 10px 20px; font-size: 20px;" /><br>
+                        <br>
+                        Already User? <a href="/login" class="anchor" style="text-align: center;"> Login</a>
+                    </div> <!-- submit button-->
+                    {% if success %}
+                    <div class="alert alert-success">
+                        {{success}}
+                    </div>
+                    {% endif %}
+                </form>
+            </div><!-- col div end-->
+        </div><!-- row div end-->
+    </div><!-- container div end-->
+    
+    <script src="static/asset/js/bootstrap.min.js"></script>
+</body>
+</html>

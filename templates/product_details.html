@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<!--Main start-->
+<div class="row mt-5">
+    {% for x in products %}
+    <div class="col-md-6">
+        <img src="{{x.pimage.url}}" width="100%" height="450px" alt="" />
+    </div>
+    <div class="col-md-6">
+        <p><strong>Product Name: &nbsp;&nbsp;</strong>{{x.name}}</p>
+        <p><strong>Price: &nbsp;&nbsp;</strong>Rs. {{x.price}}</p>
+        {% if x.cat == 1 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Fruits</p>
+        {% elif x.cat == 2 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Vegetables</p>
+        {% elif x.cat == 3 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Dairy product</p>
+        {% elif x.cat == 4 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Seeds</p>
+        {% elif x.cat == 5 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Dried Fruits</p>
+        {% elif x.cat == 6 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Flour</p>
+        {% elif x.cat == 7 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Sugar</p>
+        {% elif x.cat == 8 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Essential oils</p>
+        {% elif x.cat == 9 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Apparel</p>
+        {% elif x.cat == 10 %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Accessories</p>
+        {% else %}
+        <p><strong>Category: &nbsp;&nbsp;</strong>Footwear</p>
+        {% endif %}
+        <p><strong>Product Description: &nbsp;&nbsp;</strong>{{x.pdetails}}</p><br>
+        <a href="/addtocart/{{x.id}}"><button class="btn btn-success">Add to cart</button></a> &nbsp;&nbsp;
+        <a href="/viewcart"><button class="btn btn-success">View cart</button></a> &nbsp;&nbsp;
+        <a href="/"><button class="btn btn-success">Shop more</button></a> 
+        {% if success %}
+        <div class="alert alert-success">
+            {{success}}
+        </div>
+        {% endif %}
+        {% if msg %}
+        <div class="alert alert-danger">
+            {{msg}}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    </div>
+
+<!--Main end-->
+
+{% endblock 'main' %}

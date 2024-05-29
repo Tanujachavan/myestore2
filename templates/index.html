@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<!--Main start-->
+<div class="row mt-3">
+    <div class="col-md-3 bg-light">
+        <h5 style="font-family: Tahoma, Verdana, sans-serif; padding:10px; color:black;">Filter</h5><hr>
+        <div class="a0fogh">
+            <span><a href="/" class="anchor"><strong>Clear all</strong></a></span>
+        </div>
+        <hr>
+        <div class="a0fogh">
+            <span><a href="#" class="anchor"><strong>Food and Beverages</strong></a></span>
+            <p style="margin-bottom: 1px;"><a href="/catfilter/1" class="anchor">Fruits</a></p>
+            <p style="margin-bottom: 5px;"><a href="/catfilter/2" class="anchor">Vegetables</a></p><hr>
+        </div>
+        <div class="a0fogh">
+            <span><a href="#" class="anchor"><strong>Dairy Products</strong></a></span>
+            <p style="margin-bottom: 5px;"><a href="/catfilter/3" class="anchor">Dairy</a></p><hr>
+        </div>
+        <div class="a0fogh">
+            <span><a href="#" class="anchor"><strong>Organic Snacks</strong></a></span>
+            <p style="margin-bottom: 1px;"><a href="/catfilter/4" class="anchor">Seeds</a></p>
+            <p style="margin-bottom: 5px;"><a href="/catfilter/5" class="anchor">Dried fruits</a></p><hr>
+        </div>
+        <div class="a0fogh">
+            <span><a href="#" class="anchor"><strong>Organic Baking Supplies</strong></a></span>
+            <p style="margin-bottom: 1px;"><a href="/catfilter/6" class="anchor">Flour</a></p>
+            <p style="margin-bottom: 5px;"><a href="/catfilter/7" class="anchor">Sugar</a></p><hr>
+        </div>
+        <div class="a0fogh">
+            <span><a href="#" class="anchor"><strong>Oils</strong></a></span>
+            <p style="margin-bottom: 5px;"><a href="/catfilter/8" class="anchor">Essential oils</a></p><hr>
+        </div>
+        <div class="a0fogh">
+            <span><a href="#" class="anchor"><strong>Clothing and Accessories</strong></a></span>
+            <p style="margin-bottom: 1px;"><a href="/catfilter/9" class="anchor">Apparel</a></p>
+            <p style="margin-bottom: 5px;"><a href="/catfilter/10" class="anchor">Accessories</a></p>
+            <p style="margin-bottom: 5px;"><a href="/catfilter/11" class="anchor">Footwear</a></p><hr>
+        </div>
+        <h5 style="font-family: Tahoma, Verdana, sans-serif; padding:10px ;">Filter by price range</h5><hr>
+        <form action="/range">
+            <div class="mb-3">
+                <label for="Input1" class="form-label"><b>Min Value</b></label>
+                <input type="number" name="min" class="form-control" id="Input1" placeholder="minimum value">
+            </div> <!--minimum value-->
+            <div class="mb-3">
+                <label for="Input2" class="form-label"><b>Max Value</b></label>
+                <input type="number" name="max" class="form-control" id="Input2" placeholder="maximum value">
+            </div> <!--Maximum value-->
+            <div class="mb-3">
+                <input type="submit" class="btn btn-success" value="submit" />
+            </div>
+        </form>
+        <h5>sort by price</h5>
+        <p><a href="/sort/0" class="anchor">Low to High</a></p>
+        <p><a href="/sort/1" class="anchor">High to Low</a></p>
+    </div> <!--filter section end-->
+    <div class="col-md-9">
+        <div class="row">
+            {% for x in products %}
+            <div class="col-md-4 mt-3">
+                <div class="card" style="width: 100%;">
+                    <img src="{{x.pimage.url}}" width="100%" height="200px" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{x.name}}</h5>
+                      <p class="card-text">Rs. {{x.price}}</p>
+                      {% if x.cat == 1 %}
+                      <p class="card-text bol">Fruits</p>
+                      {% elif x.cat == 2 %}
+                      <p class="card-text bol">Vegetables</p>
+                      {% elif x.cat == 3 %}
+                      <p class="card-text bol">Dairy products</p>
+                      {% elif x.cat == 4 %}
+                      <p class="card-text bol">Seeds</p>
+                      {% elif x.cat == 5 %}
+                      <p class="card-text bol">Dried fruits</p>
+                      {% elif x.cat == 6 %}
+                      <p class="card-text bol">Flour</p>
+                      {% elif x.cat == 7 %}
+                      <p class="card-text bol">Sugar</p>
+                      {% elif x.cat == 8 %}
+                      <p class="card-text bol">Essential oils</p>
+                      {% elif x.cat == 9 %}
+                      <p class="card-text bol">Apparel</p>
+                      {% elif x.cat == 10 %}
+                      <p class="card-text bol">Accessories</p>
+                      {% else %}
+                      <p class="card-text bol">Footwear</p>
+                      {% endif %}
+                      <a href="/pdetails/{{x.id}}" class="btn btn-success">see details</a>
+                    </div>
+                </div> <!--Product1 end-->
+            </div>
+            {% endfor %}
+        </div>
+    </div> <!--Product section end-->
+</div> <!--Product and filter section end-->
+<!--Main end-->
+
+{% endblock 'main' %}

@@ -1,0 +1,37 @@
+.anchor{
+    text-decoration:none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding-left: 10px;
+    color: black;
+}
+
+.title{
+    font-size: 60px; /* Adjust the size as needed */
+    margin-right: 50px;
+    margin-top: 100px;
+    margin-bottom: 20px; /* Adjust the spacing as needed */
+    font-weight: bold;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.Home{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 5px;
+    background-color:#8bc34a;
+    color: white;
+    text-align: center;
+}
+
+.headers{
+    font-size:20px;
+}
+
+.ic{
+    text-align: center;
+    font-size: 40px;
+}
+
+.bol{
+    font-weight: bold;
+}
